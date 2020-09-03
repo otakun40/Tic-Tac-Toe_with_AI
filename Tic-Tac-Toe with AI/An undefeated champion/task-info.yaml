@@ -1,18 +1,7 @@
 type: edu
 custom_name: stage5
 files:
-- name: src/tictactoe/Main.java
-  visible: true
-  text: |
-    package tictactoe;
-
-    public class Main {
-        public static void main(String[] args) {
-            // write your code here
-        }
-    }
-  learner_created: false
-- name: test/TicTacToeTest.java
+  - name: test/TicTacToeTest.java
   visible: false
   text: |
     import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
@@ -323,17 +312,36 @@ files:
                 TicTacToeField next = fields.get(i);
 
                 if (!(curr.equalTo(next) || curr.hasNextAs(next))) {
-                    return new CheckResult(false,
-                        "For two fields following each " +
-                            "other one is not a continuation " +
-                            "of the other (they differ more than in two places).");
-                }
+                return new CheckResult(false,
+                    "For two fields following each " +
+                        "other one is not a continuation " +
+                        "of the other (they differ more than in two places).");
             }
-
-            return CheckResult.correct();
         }
+
+        return CheckResult.correct();
     }
-  learner_created: false
+    }
+    learner_created: false
+    - name: src/Main.java
+      visible: true
+      learner_created: true
+    - name: src/Board.java
+      visible: true
+      learner_created: true
+    - name: src/Game.java
+      visible: true
+      learner_created: true
+    - name: src/Player.java
+      visible: true
+      learner_created: true
+    - name: src/Side.java
+      visible: true
+      learner_created: true
 feedback_link: https://hyperskill.org/projects/81/stages/451/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/81/stages/451/implement">JetBrains
+    Academy</a>
+  time: Thu, 03 Sep 2020 22:00:51 UTC
 record: -1

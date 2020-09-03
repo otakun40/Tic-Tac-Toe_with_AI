@@ -1,5 +1,3 @@
-package tictactoe;
-
 public enum Side {
     X('X'),
     O('O');

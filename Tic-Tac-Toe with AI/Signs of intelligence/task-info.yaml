@@ -1,7 +1,7 @@
 type: edu
 custom_name: stage4
 files:
-- name: src/tictactoe/Main.java
+  - name: src/tictactoe/Main.java
   visible: true
   text: |
     package tictactoe;
@@ -300,6 +300,9 @@ files:
         }
     }
   learner_created: false
+                     - name: src/tictactoe/Field.java
+                     visible: true
+                     learner_created: true
 feedback_link: https://hyperskill.org/projects/81/stages/450/implement
-status: Unchecked
-record: -1
+status: Solved
+record: 3

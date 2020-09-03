@@ -1,5 +1,3 @@
-package tictactoe;
-
 import java.util.Random;
 
 public abstract class Player {
@@ -61,8 +59,6 @@ class EasyAI extends Player {
 }
 
 class MediumAI extends Player {
-
-    Side opponentSide = playerSide == Side.X ? Side.O : Side.X;
 
     public MediumAI(Side playerSide) {
         super(playerSide);
@@ -134,6 +130,17 @@ class HardAI extends Player {
     @Override
     public void move(Board board) {
         char[] field = board.getField();
+        if (board.emptyCellsCounter() == 9) {
+            Random random = new Random();
+            while (true) {
+                int c = random.nextInt(9);
+                if (board.isCellEmpty(c)) {
+                    board.setCell(c, playerSide);
+                    System.out.println("Making move level \"hard\"");
+                    return;
+                }
+            }
+        }
         int bestScore = Integer.MIN_VALUE;
         int bestMove = -1;
 
@@ -158,7 +165,7 @@ class HardAI extends Player {
             return 10;
         } else if (isPlayerWin(board, opponentSide)) {
             return -10;
-        } else if (board.getEmptySpacePositions().size() == 0) {
+        } else if (board.emptyCellsCounter() == 0) {
             return 0;
         }
 
@@ -177,6 +184,7 @@ class HardAI extends Player {
                 }
             }
             return bestScore;
+
         } else {
             bestScore = Integer.MAX_VALUE;
             for (int i = 0; i < field.length; i++) {
@@ -191,8 +199,6 @@ class HardAI extends Player {
             }
         }
         return bestScore;
-
-
     }
 
     public boolean isPlayerWin(Board board, Side playerSide) {
